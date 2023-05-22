@@ -41,24 +41,28 @@ quicksort(array, 0, size - 1, size);
  */
 int partition(int *array, int low, int high, size_t size)
 {
-    int pivot = array[high];
-    int i = low - 1;
-    int j;
+int pivot = array[high];
+int i = low;
+int j;
 
-    for (j = low; j <= high - 1; j++)
-    {
-        if (array[j] < pivot)
-        {
-            i++;
-            swap(&array[i], &array[j]);
-            print_array(array, size);
-        }
-    }
-
-    swap(&array[i + 1], &array[high]);
-    print_array(array, size);
-
-    return (i + 1);
+for (j = low; j <= high; j++)
+{
+if (array[j] <= pivot)
+{
+if (i != j)
+{
+swap(&array[i], &array[j]);
+print_array(array, size);
+}
+i++;
+}
+}
+if (i != high)
+{
+swap(&array[i + 1], &array[high]);
+print_array(array, size);
+}
+return (i);
 }
 /**
  * swap - swap two elements
@@ -67,7 +71,7 @@ int partition(int *array, int low, int high, size_t size)
  */
 void swap(int *a, int *b)
 {
-    int tmp = *a;
-    *a = *b;
-    *b = tmp;
+int tmp = *a;
+*a = *b;
+*b = tmp;
 }
