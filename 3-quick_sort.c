@@ -1,5 +1,17 @@
 #include "sort.h"
 /**
+ * swap - swap two elements
+ * @a: first element
+ * @b: second element
+ */
+void swap(int *a, int *b)
+{
+int tmp = *a;
+*a = *b;
+*b = tmp;
+}
+
+/**
  * partition - partition the array using Lomuto scheme
  * @array: array to be sorted
  * @low: starting index
@@ -13,7 +25,7 @@ int pivot = array[high];
 int i = low;
 int j;
 
-for (j = low; j <= high; j++)
+for (j = low; j < high; j++)
 {
 if (array[j] <= pivot)
 {
@@ -27,7 +39,7 @@ i++;
 }
 if (i != high)
 {
-swap(&array[i + 1], &array[high]);
+swap(&array[i], &array[high]);
 print_array(array, size);
 }
 return (i);
@@ -61,18 +73,4 @@ void quick_sort(int *array, size_t size)
 if (array == NULL || size < 2)
 return;
 quicksort(array, 0, size - 1, size);
-}
-
-
-
-/**
- * swap - swap two elements
- * @a: first element
- * @b: second element
- */
-void swap(int *a, int *b)
-{
-int tmp = *a;
-*a = *b;
-*b = tmp;
 }
